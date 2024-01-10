@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="header&footer.css" />
+    <style>
+        body {
+            background-color: #1B4353;
+        }
+
+        .feedback-form {
+            margin: 10px auto;
+            width: 85%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        #name,
+        #email,
+        textarea,
+        select {
+            width: 99%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .radio-group {
+            margin-bottom: 16px;
+        }
+
+        input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        .file-upload-container {
+            margin-bottom: 16px;
+        }
+
+        button {
+            background-color: #1B4353;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1B4353;
+        }
+
+        /* Additional Styling for Creativity */
+        h2 {
+            color: #1B4353;
+            text-align: center;
+        }
+
+        .feedback-form input[type="text"]:focus,
+        .feedback-form input[type="email"]:focus,
+        .feedback-form textarea:focus,
+        .feedback-form select:focus {
+            border: 2px solid #1B4353;
+        }
+
+        .file-upload-btn {
+            width: 93%;
+            background-color: #1B4353;
+            color: #fff;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .file-upload-btn:hover {
+            background-color: #1B4353;
+        }
+
+        .file-upload-input {
+            display: none;
+        }
+
+        .file-upload-label {
+            font-size: 14px;
+            margin-left: 5px;
+        }
+
+        /* Additional Styling for Rating Scale */
+        .rating-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .rating-label {
+            margin-right: 10px;
+        }
+
+        .rating-input {
+            width: auto;
+        }
+
+        .date-time-stamp {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 16px;
+        }
+
+        .anonymous-checkbox {
+            margin-bottom: 16px;
+        }
+
+        form {
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="popup.html" class="navLink">Home</a>
+        <a href="#" class="navLink">Instructions</a>
+        <input type="text" id="search" placeholder="Search here" />
+        <span id="openSidebarBtn">☰</span>
+    </header>
+    <div id="sidebar">
+        <span id="closeSidebarBtn">X</span>
+        <div id="sidebarContainer">
+            <a href="#" class="sidebarLinks">Latest Interactions</a>
+            <a href="#" class="sidebarLinks">Current Visit Count</a>
+            <a href="#" class="sidebarLinks">Export and Download Data</a>
+            <a href="allData.html" class="sidebarLinks">Show All Data</a>
+            <a href="feedback.html" class="sidebarLinks">Feedback Form</a>
+            <a href="contactus.html" class="sidebarLinks">Contact Us</a>
+        </div>
+    </div>
+
+    <div class="feedback-form">
+        <h2>Feedback Form</h2>
+        <form id="feedbackForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="feedbackType">Feedback Type:</label>
+            <select id="feedbackType" name="feedbackType" required>
+                <option value="general">General Feedback</option>
+                <option value="bug">Bug Report</option>
+                <option value="feature">Feature Request</option>
+            </select>
+
+            <div class="rating-container">
+                <span class="rating-label">Rating:</span>
+                <input type="number" id="rating" name="rating" min="1" max="5" required class="rating-input">
+            </div>
+
+            <div class="file-upload-container">
+                <label class="file-upload-btn" for="fileUpload">Upload File</label>
+                <input type="file" id="fileUpload" class="file-upload-input">
+                <span class="file-upload-label">No file chosen</span>
+            </div>
+
+            <label for="comments">Comments:</label>
+            <textarea id="comments" name="comments" rows="4" required></textarea>
+
+            <p class="date-time-stamp" id="dateTimeStamp"></p>
+
+            <!-- <div class="anonymous-checkbox">
+                <input type="checkbox" id="anonymous" name="anonymous">
+                <label for="anonymous">Submit anonymously</label>
+            </div> -->
+
+            <button type="button" onclick="submitFeedback()">Submit</button>
+        </form>
+    </div>
+    <footer id="footer">
+        <p>Security & Privacy</p>
+        <p>Version Info.</p>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        function submitFeedback() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var feedbackType = document.getElementById('feedbackType').value;
+            var rating = document.getElementById('rating').value;
+            var comments = document.getElementById('comments').value;
+            var dateTimeStamp = new Date().toLocaleString();
+            //var isAnonymous = document.getElementById('anonymous').checked;
+
+            // You can add further validation or processing here
+
+            alert('Feedback submitted!\n\nSubject: ' + subject + '\nEmail: ' + email +
+                '\nFeedback Type: ' + feedbackType + '\nRating: ' + rating +
+                '\nComments: ' + comments + '\nDate & Time: ' + dateTimeStamp);
+            // +'\nAnonymous: ' + (isAnonymous ? 'Yes' : 'No'));
+
+            // Reset the form after submission if needed
+            document.getElementById('feedbackForm').reset();
+            // Update date and time stamp
+            document.getElementById('dateTimeStamp').innerText = 'Last submitted: ' + dateTimeStamp;
+        }
+
+        // Display selected file name in the label
+        document.getElementById('fileUpload').addEventListener('change', function () {
+            var fileName = this.value.split('\\').pop();
+            document.querySelector('.file-upload-label').innerText = fileName;
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="header&footer.css" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1B4353;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .contactContainer {
+            width: 270px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10px;
+            /* margin-bottom: 100px; */
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1B4353;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section h2 {
+            color: #1B4353;
+            border-bottom: 2px solid #1B4353;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        .contact-details,
+        .contact-form {
+            width: 90%;
+            display: block;
+            vertical-align: top;
+        }
+
+        .contact-details p {
+            margin-bottom: 30px;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .contact-form button {
+            background-color: #1B4353;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #1B4353;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="popup.html" class="navLink">Home</a>
+        <a href="#" class="navLink">Instructions</a>
+        <input type="text" id="search" placeholder="Search here" />
+        <span id="openSidebarBtn">☰</span>
+    </header>
+    <div id="sidebar">
+        <span id="closeSidebarBtn">X</span>
+        <div id="sidebarContainer">
+            <a href="#" class="sidebarLinks">Latest Interactions</a>
+            <a href="#" class="sidebarLinks">Current Visit Count</a>
+            <a href="#" class="sidebarLinks">Export and Download Data</a>
+            <a href="allData.html" class="sidebarLinks">Show All Data</a>
+            <a href="feedback.html" class="sidebarLinks">Feedback Form</a>
+            <a href="contactus.html" class="sidebarLinks">Contact Us</a>
+        </div>
+    </div>
+    <div class="contactContainer">
+        <h1>Contact Us</h1>
+
+        <div class="section">
+            <div class="contact-details">
+                <h2>Get In Touch</h2>
+                <p><strong>Email:</strong> cookielessextensionworld@example.com</p>
+                <p><strong>Phone:</strong> +91 1234567890</p>
+                <p><strong>Twitter:</strong> @cookielessworld</p>
+                <p><strong>Address:</strong> KIET Group of Institutions, Ghaziabad</p>
+            </div>
+
+            <div class="contact-form">
+                <h2>Send a Message</h2>
+                <form id="contactForm">
+                    <label for="yourName">Your Name:</label>
+                    <input type="text" id="yourName" name="yourName" required>
+
+                    <label for="yourEmail">Your Email:</label>
+                    <input type="email" id="yourEmail" name="yourEmail" required>
+
+
+                    <label for="yourNumber">Your Phone Number:</label>
+                    <input type="tel" id="yourNumber" name="yourNumber" required>
+                    <label for="yourMessage">Your Message:</label>
+                    <textarea id="yourMessage" name="yourMessage" rows="4" required></textarea>
+
+
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <p>Security & Privacy</p>
+        <p>Version Info.</p>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // You can add your logic here to handle the form submission, e.g., sending data to a server.
+
+            // For example, you can use fetch API to send a POST request to your server.
+            // Replace the URL with the actual endpoint you want to send data to.
+            fetch('https://example.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    yourName: document.getElementById('yourName').value,
+                    yourEmail: document.getElementById('yourEmail').value,
+                    yourMessage: document.getElementById('yourMessage').value,
+                    yourNumber: document.getElementById('yourNumber').value,
+                }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Handle the response from the server, e.g., display a success message.
+                    console.log('Success:', data);
+                })
+                .catch(error => {
+                    // Handle errors, e.g., display an error message.
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+
+</body>
+
+</html>

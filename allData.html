@@ -6,31 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secure Trial</title>
     <link rel="stylesheet" href="header&footer.css" />
-    <style>
-        body {
-            text-align: center;
-        }
-
-        img {
-            width: 250px;
-            height: 250px;
-            /* box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px; */
-        }
-
-        #imageContainer {
-            padding: 0px 10px;
-        }
-
-        #extensionName {
-            font-size: 30px;
-            letter-spacing: 1.5px;
-            margin: 0;
-            font-weight: bold;
-            /* font-family: "Alegreya Sans SC"; */
-            font-family: 'Helvetica Neue', sans-serif;
-            text-shadow: 1px 1px 2px #3d3b3b;
-        }
-    </style>
 </head>
 
 <body>
@@ -40,10 +15,10 @@
         <input type="text" id="search" placeholder="Search here" />
         <span id="openSidebarBtn">☰</span>
     </header>
-    <div id="imageContainer">
-        <img src="images/cookie.png" alt="Delete All Cookies Image">
-    </div>
-    <p id="extensionName">SECURETRIAL</p>
+    <h2>Interaction Tracker</h2>
+    <button id="showInteractions">Show Interactions</button>
+    <div id="interactionsData"></div>
+    <!-- <ul id="blockedCookiesList"></ul> -->
     <div id="sidebar">
         <span id="closeSidebarBtn">X</span>
         <div id="sidebarContainer">
