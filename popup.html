@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Trial</title>
+    <style>
+        body {
+            width: 300px;
+            height: 550px;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            width: 280px;
+            height: 30px;
+            background-color: #1D70A2;
+            padding: 10px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #openSidebarBtn {
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #sidebar {
+            width: 220px;
+            height: 600px;
+            background-color: #1B4353;
+            float: right;
+            z-index: 100;
+            position: absolute;
+            top: 0;
+            right: 0;
+            visibility: hidden;
+            transition: 0.5s;
+        }
+
+        #closeSidebarBtn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 16px;
+            margin-left: 50px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        #search {
+            width: 120px;
+            height: 26px;
+            outline: none;
+            padding: 2px 8px;
+            border-radius: 50px;
+            border: none;
+            font-size: 12px;
+        }
+
+        #settings {
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .sidebarLinks {
+            display: block;
+            color: #fff;
+            font-size: 12px;
+            letter-spacing: 1;
+            text-decoration: none;
+            padding: 10px;
+            background-color: #1D70A2;
+            margin: 10px;
+        }
+
+        #sidebarContainer {
+            margin-top: 50px;
+        }
+
+        #footer {
+            width: 280px;
+            height: 30px;
+            background-color: #1D70A2;
+            position: fixed;
+            bottom: 0px;
+            padding: 10px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <p>Home</p>
+        <p>Instructions</p>
+        <input type="text" id="search" placeholder="Search here" />
+        <span id="openSidebarBtn">☰</span>
+    </header>
+    <h2>Interaction Tracker</h2>
+    <button id="showInteractions">Show Interactions</button>
+    <div id="interactionsData"></div>
+    <!-- <ul id="blockedCookiesList"></ul> -->
+    <div id="sidebar">
+        <span id="closeSidebarBtn">X</span>
+        <div id="sidebarContainer">
+            <a href="#" class="sidebarLinks">Latest Interactions</a>
+            <a href="#" class="sidebarLinks">Current Visit Count</a>
+            <a href="#" class="sidebarLinks">Export and Download Data</a>
+            <a href="#" class="sidebarLinks">Show All Data</a>
+            <a href="#" class="sidebarLinks">Feedback Form</a>
+            <a href="#" class="sidebarLinks">Contact Us</a>
+        </div>
+    </div>
+    <footer id="footer">
+        <p>Security & Privacy</p>
+        <p>Version Info.</p>
+    </footer>
+    <script src="script.js"></script>
+    <script src="popup.js"></script>
+</body>
+
+</html>

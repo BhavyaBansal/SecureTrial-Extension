@@ -1,0 +1,10 @@
+1) page views 
+2) Patterns and Graphs
+3) Geolocation if permitted
+4) User Agent: Capture the user agent string, which provides information about the user's browser and device.
+5) Feedback Form
+6) contact Us
+7) Home Page
+8) Local Storage m store kyu nhi horha
+9) Dark Mode Preferences:
+10) Search Queries: If applicable, track the search queries users enter on a website.

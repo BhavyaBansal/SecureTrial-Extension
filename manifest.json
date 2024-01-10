@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "name": "Interaction Tracker",
+  "version": "1.0",
+  "description": "Tracks user interactions with websites.",
+  "icons": {
+    "128": "images/logo.png"
+  },
+  "permissions": [
+    "storage",
+    "webNavigation",
+    "activeTab",
+    "webRequest",
+    "webRequestBlocking",
+    "cookies"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "images/logo.png"
+    }
+  }
+}
