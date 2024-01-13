@@ -33,5 +33,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         chrome.storage.local.set({ interactions: interactions });
       });
     }
+  } else if (request.action === "set_user_agent") {
+    // alert(request.userAgent);
+    chrome.storage.local.set({ agentData: request.userAgent });
   }
 });

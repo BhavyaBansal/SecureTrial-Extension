@@ -6,6 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secure Trial</title>
     <link rel="stylesheet" href="header&footer.css" />
+    <style>
+        #mainContent {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #interactionsData {
+            width: 90%;
+            overflow: scroll;
+            height: 400px;
+            margin-bottom: 50px;
+        }
+
+        #showInteractions {
+            padding: 8px;
+            border-radius: 0px;
+            outline: none;
+            border: none;
+            background-color: #ccc;
+            letter-spacing: 1px;
+            font-size: 10px;
+            margin-bottom: 10px;
+        }
+
+        #showInteractions:hover {
+            background-color: #262626;
+            color: #fff;
+            transition: 0.5s;
+            letter-spacing: 1px;
+            font-size: 10px;
+        }
+
+        #locationData {
+            margin: 10px;
+            letter-spacing: 1px;
+            font-size: 10px;
+
+        }
+    </style>
 </head>
 
 <body>
@@ -15,10 +56,12 @@
         <input type="text" id="search" placeholder="Search here" />
         <span id="openSidebarBtn">☰</span>
     </header>
-    <h2>Interaction Tracker</h2>
-    <button id="showInteractions">Show Interactions</button>
-    <div id="interactionsData"></div>
-    <!-- <ul id="blockedCookiesList"></ul> -->
+    <div id="locationData"></div>
+    <div id="mainContent">
+        <h2>All My Interactions</h2>
+        <button id="showInteractions">Show All Interactions</button>
+        <p id="interactionsData"></p>
+    </div>
     <div id="sidebar">
         <span id="closeSidebarBtn">X</span>
         <div id="sidebarContainer">

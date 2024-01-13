@@ -12,7 +12,9 @@
     "activeTab",
     "webRequest",
     "webRequestBlocking",
-    "cookies"
+    "cookies",
+    "<all_urls>",
+    "geolocation"
   ],
   "background": {
     "scripts": ["background.js"],
@@ -21,7 +23,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content.js"]
+      "js": ["content.js", "popup.js"]
     }
   ],
   "browser_action": {
