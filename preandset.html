@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permission Settings</title>
+    <link rel="stylesheet" href="header&footer.css" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1B4353;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.3s ease;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #headingPermission {
+            letter-spacing: 1px;
+            font-size: 18px;
+
+        }
+
+        body.dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .container {
+            margin: 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 290px;
+            flex-grow: 1;
+            transition: margin 0.3s ease;
+        }
+
+        h2 {
+            text-align: center;
+            color: #1B4353;
+            margin-bottom: 20px;
+        }
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .toggle-label {
+            flex-grow: 1;
+            color: #000000;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+            background-color: #dddddd;
+            border-radius: 20px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #dddddd;
+            transition: 0.4s;
+            border-radius: 20px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            border-radius: 50%;
+            transition: 0.4s;
+        }
+
+        input:checked+.toggle-slider {
+            background-color: #1B4353;
+        }
+
+        input:checked+.toggle-slider:before {
+            transform: translateX(20px);
+        }
+
+        .data-box {
+            padding: 20px;
+            display: none;
+        }
+
+        .data-box.active {
+            display: block;
+        }
+
+        .fetched-data {
+            color: #333;
+            letter-spacing: 1px;
+            font-size: 10px;
+        }
+
+        .notification {
+            color: #777;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="popup.html" class="navLink">Home</a>
+        <a href="#" class="navLink">Instructions</a>
+        <input type="text" id="search" placeholder="Search here" />
+        <span id="openSidebarBtn">☰</span>
+    </header>
+    <div id="sidebar">
+        <span id="closeSidebarBtn">X</span>
+        <div id="sidebarContainer">
+            <a href="#" class="sidebarLinks">Latest Interactions</a>
+            <a href="#" class="sidebarLinks">Current Visit Count</a>
+            <a href="#" class="sidebarLinks">Export and Download Data</a>
+            <a href="allData.html" class="sidebarLinks">Show All Data</a>
+            <a href="preandset.html" class="sidebarLinks">Permissions & Settings</a>
+            <a href="feedback.html" class="sidebarLinks">Feedback Form</a>
+            <a href="contactus.html" class="sidebarLinks">Contact Us</a>
+        </div>
+    </div>
+    <div class="container">
+        <h2 id="headingPermission">Permissions & Settings</h2>
+
+        <!-- Location Toggle -->
+        <div class="toggle-container">
+            <span class="toggle-label">Location</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="locationToggle">
+                <span class="toggle-slider"></span>
+            </label>
+        </div>
+        <div class="data-box" id="locationData">
+            <div class="notification">Turn on location to get details</div>
+            <div class="fetched-data" id="geolocation"></div>
+        </div>
+
+        <!-- User Agent Toggle -->
+        <div class="toggle-container">
+            <span class="toggle-label">Device Information</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="userAgentToggle">
+                <span class="toggle-slider"></span>
+            </label>
+        </div>
+        <div class="data-box" id="userAgentData">
+            <div class="notification">Turn on user agent to get details</div>
+            <div class="fetched-data">Fetched User Agent Data Here</div>
+        </div>
+
+        <!-- User Information Toggle -->
+        <div class="toggle-container">
+            <span class="toggle-label">User Information</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="userInfoToggle">
+                <span class="toggle-slider"></span>
+            </label>
+        </div>
+        <div class="data-box" id="userData">
+            <div class="notification">Turn on user information to get details</div>
+            <div class="fetched-data">Fetched User Information Here</div>
+        </div>
+        <!-- Cookies Toggle -->
+
+        <div class="toggle-container">
+            <span class="toggle-label">Cookies</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="cookiesToggle">
+                <span class="toggle-slider"></span>
+            </label>
+        </div>
+        <div class="data-box" id="cookiesData">
+            <div class="notification">Turn on cookies to get details</div>
+            <div class="fetched-data">Fetched Cookies Data Here</div>
+        </div>
+        <!-- Dark and Light Mode Toggle -->
+        <div class="toggle-container">
+            <span class="toggle-label">Dark Mode</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="darkModeToggle">
+                <span class="toggle-slider"></span>
+            </label>
+        </div>
+
+    </div>
+    <footer id="footer">
+        <p>Security & Privacy</p>
+        <p>Version Info.</p>
+    </footer>
+    <script src="script.js"></script>
+    <script src="popup.js"></script>
+</body>
+
+</html>

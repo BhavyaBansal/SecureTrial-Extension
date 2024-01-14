@@ -4,9 +4,13 @@
 10) Instructions
 7) Dark Mode Preferences:
 5) Local Storage m store kyu nhi horha
-3) User Agent: Capture the user agent string, which provides information about the user's browser and device.
 1) Patterns and Graphs
 2) Settings
+
+All through buttons
+Geolocation - *
+Device Information - *
+
 
 Creating an extension to track user interactions and location can be an interesting project, but whether it's a good fit for the concept of a "Cookieless World" depends on the specific goals and requirements of your project. Here are some considerations:
 

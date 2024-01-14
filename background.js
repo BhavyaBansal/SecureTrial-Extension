@@ -46,31 +46,30 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
   ["requestHeaders"]
 );
 
-// chrome.webRequest.onBeforeSendHeaders.addListener(
-//   (details) => {
-//     if (details.requestHeaders) {
-//       // console.log(details.requestHeaders);
-//       const cookies = details.requestHeaders.find(
-//         (header) => header.name === "Cookie"
-//       );
-//       // console.log(cookies);
-//       if (cookies) {
-//         const cookieInfo = {
-//           url: details.url,
-//           cookies: cookies.value,
-//           purpose: "Some description of the purpose of the cookies",
-//         };
-//         console.log("Captured Cookies:", cookieInfo);
-//         chrome.runtime.sendMessage({ action: "captureCookies", cookieInfo });
-//       }
-//     }
-//   },
-//   { urls: ["<all_urls>"] },
-//   ["requestHeaders"]
-// );
+chrome.webRequest.onBeforeSendHeaders.addListener(
+  (details) => {
+    if (details.requestHeaders) {
+      // console.log(details.requestHeaders);
+      const cookies = details.requestHeaders.find(
+        (header) => header.name === "Cookie"
+      );
+      console.log(cookies);
+      if (cookies) {
+        const cookieInfo = {
+          url: details.url,
+          cookies: cookies.value,
+          purpose: "Some description of the purpose of the cookies",
+        };
+        console.log("Captured Cookies:", cookieInfo);
+        chrome.runtime.sendMessage({ action: "captureCookies", cookieInfo });
+      }
+    }
+  },
+  { urls: ["<all_urls>"] },
+  ["requestHeaders"]
+);
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  console.log("hello");
   if (request.action === "getLocation") {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
@@ -79,7 +78,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
           };
-          console.log(location);
+          // console.log(location);
+          chrome.storage.local.set({ location: location });
           sendResponse(location);
         },
         (error) => {
