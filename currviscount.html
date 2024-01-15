@@ -7,6 +7,10 @@
     <title>Secure Trial</title>
     <link rel="stylesheet" href="header&footer.css" />
     <style>
+        body {
+            text-align: center;
+        }
+
         #mainContent {
             display: flex;
             flex-direction: column;
@@ -14,14 +18,23 @@
             align-items: center;
         }
 
-        #interactionsData {
+        #visitsData {
             width: 90%;
             overflow: scroll;
             height: 400px;
             margin-bottom: 50px;
         }
 
-        #showInteractions {
+        #totalCount {
+            letter-spacing: 1;
+            font-size: 21px;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+            text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
+                0px -4px 10px rgba(255, 255, 255, 0.3);
+        }
+
+        #totalInteractionsBtn {
             padding: 8px;
             border-radius: 0px;
             outline: none;
@@ -32,7 +45,7 @@
             margin-bottom: 10px;
         }
 
-        #showInteractions:hover {
+        #totalInteractionsBtn:hover {
             background-color: #262626;
             color: #fff;
             transition: 0.5s;
@@ -49,12 +62,10 @@
         <input type="text" id="search" placeholder="Search here" />
         <span id="openSidebarBtn">☰</span>
     </header>
-    <!-- <div id="locationData" class="impData"></div> -->
-    <!-- <p id="userAgent" class="impData">Loading...</p> -->
     <div id="mainContent">
-        <h2>All My Interactions</h2>
-        <button id="showInteractions">Show All Interactions</button>
-        <p id="interactionsData"></p>
+        <p id="totalCount"></p>
+        <button id="totalInteractionsBtn">Show All Visit Counts</button>
+        <p id="visitsData"></p>
     </div>
     <div id="sidebar">
         <span id="closeSidebarBtn">X</span>
@@ -62,8 +73,8 @@
             <a href="latestinteraction.html" class="sidebarLinks">Latest Interactions</a>
             <a href="currviscount.html" class="sidebarLinks">Current Visit Count</a>
             <!-- <a href="#" class="sidebarLinks">Export and Download Data</a> -->
-            <a href="allData.html" class="sidebarLinks">Show All Data</a>
             <a href="preandset.html" class="sidebarLinks">Permissions & Settings</a>
+            <a href="allData.html" class="sidebarLinks">Show All Data</a>
             <a href="feedback.html" class="sidebarLinks">Feedback Form</a>
             <a href="contactus.html" class="sidebarLinks">Contact Us</a>
         </div>
@@ -74,6 +85,7 @@
     </footer>
     <script src="script.js"></script>
     <script src="popup.js"></script>
+    <script src="visits.js"></script>
 </body>
 
 </html>

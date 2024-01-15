@@ -17,6 +17,16 @@ function closeSidebar() {
   document.getElementById("sidebar").style.visibility = "hidden";
 }
 
+chrome.storage.local.get("interactions", (data) => {
+  const interactions = data.interactions || [];
+  const totalInteractions = interactions.reduce((total, interaction) => {
+    return total + interaction.interactionCount;
+  }, 0);
+  document.getElementById(
+    "totalCount"
+  ).innerHTML = `Total Visit Counts: ${totalInteractions}`;
+});
+
 document
   .getElementById("locationToggle")
   .addEventListener("change", function () {
@@ -71,47 +81,47 @@ document
   });
 
 // User Information Toggle
-document
-  .getElementById("userInfoToggle")
-  .addEventListener("change", function () {
-    console.log("User Information Toggle Changed");
-    var dataBox = document.getElementById("userData");
-    var notification = dataBox.querySelector(".notification");
-    dataBox.classList.toggle("active", this.checked);
+// document
+//   .getElementById("userInfoToggle")
+//   .addEventListener("change", function () {
+//     console.log("User Information Toggle Changed");
+//     var dataBox = document.getElementById("userData");
+//     var notification = dataBox.querySelector(".notification");
+//     dataBox.classList.toggle("active", this.checked);
 
-    // Simulate fetching data (replace with actual fetching logic)
-    if (this.checked) {
-      notification.style.display = "none";
-      document.querySelector("#userData .fetched-data").textContent =
-        "Fetched user information goes here";
-    } else {
-      notification.style.display = "block";
-    }
-  });
+//     // Simulate fetching data (replace with actual fetching logic)
+//     if (this.checked) {
+//       notification.style.display = "none";
+//       document.querySelector("#userData .fetched-data").textContent =
+//         "Fetched user information goes here";
+//     } else {
+//       notification.style.display = "block";
+//     }
+//   });
 
-// Dark and Light Mode Toggle
-document
-  .getElementById("darkModeToggle")
-  .addEventListener("change", function () {
-    console.log("Dark and Light Mode Toggle Changed");
-    document.body.classList.toggle("dark-mode", this.checked);
-  });
+// // Dark and Light Mode Toggle
+// document
+//   .getElementById("darkModeToggle")
+//   .addEventListener("change", function () {
+//     console.log("Dark and Light Mode Toggle Changed");
+//     document.body.classList.toggle("dark-mode", this.checked);
+//   });
 
-// Cookies Toggle
-document
-  .getElementById("cookiesToggle")
-  .addEventListener("change", function () {
-    console.log("Cookies Toggle Changed");
-    var dataBox = document.getElementById("cookiesData");
-    var notification = dataBox.querySelector(".notification");
-    dataBox.classList.toggle("active", this.checked);
+// // Cookies Toggle
+// document
+//   .getElementById("cookiesToggle")
+//   .addEventListener("change", function () {
+//     console.log("Cookies Toggle Changed");
+//     var dataBox = document.getElementById("cookiesData");
+//     var notification = dataBox.querySelector(".notification");
+//     dataBox.classList.toggle("active", this.checked);
 
-    // Simulate fetching data (replace with actual fetching logic)
-    if (this.checked) {
-      notification.style.display = "none";
-      document.querySelector("#cookiesData .fetched-data").textContent =
-        "Fetched cookies data goes here";
-    } else {
-      notification.style.display = "block";
-    }
-  });
+//     // Simulate fetching data (replace with actual fetching logic)
+//     if (this.checked) {
+//       notification.style.display = "none";
+//       document.querySelector("#cookiesData .fetched-data").textContent =
+//         "Fetched cookies data goes here";
+//     } else {
+//       notification.style.display = "block";
+//     }
+//   });

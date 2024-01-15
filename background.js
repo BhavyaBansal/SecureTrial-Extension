@@ -53,7 +53,7 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
       const cookies = details.requestHeaders.find(
         (header) => header.name === "Cookie"
       );
-      console.log(cookies);
+      // console.log(cookies);
       if (cookies) {
         const cookieInfo = {
           url: details.url,

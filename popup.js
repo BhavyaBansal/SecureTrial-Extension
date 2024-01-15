@@ -7,6 +7,7 @@ document.getElementById("showInteractions").addEventListener("click", () => {
   });
 });
 
+
 function displayInteractions(interactions) {
   const interactionsDataDiv = document.getElementById("interactionsData");
 
@@ -18,9 +19,13 @@ function displayInteractions(interactions) {
     const paragraph = document.createElement("p");
 
     paragraph.innerHTML = `<b>${count})</b>`;
+    paragraph.innerHTML += `<b>Website Name:</b> ${interaction.websiteName}<br>`;
     paragraph.innerHTML += `<b>URL:</b> ${interaction.url}<br>`;
     paragraph.innerHTML += `<b>Visit Count:</b> ${interaction.interactionCount}<br>`;
     paragraph.innerHTML += `<b>Duration:</b> ${interaction.duration} milliseconds<br>`;
+    paragraph.innerHTML += `<b>Time Zone:</b> ${interaction.timeZone}<br>`;
+    paragraph.innerHTML += `<b>Cookies Enabled:</b> ${interaction.cookiesEnabled}<br>`;
+    paragraph.innerHTML += `<b>Loading Time:</b> ${interaction.loadingTime} milliseconds<br>`;
     paragraph.innerHTML += `<b>Timestamp:</b> ${new Date(
       interaction.timestamp
     ).toLocaleString()}<br>`;
@@ -41,18 +46,18 @@ function displayInteractions(interactions) {
 // });
 
 // if (window.confirm("Allow this extension to access your location?")) {
-  // document.addEventListener("DOMContentLoaded", () => {
-  //   chrome.runtime.sendMessage({ action: "getLocation" }, (location) => {
-  //     if (location) {
-  //       const locationData = `Latitude: ${location.latitude}, Longitude: ${location.longitude}`;
-  //       // alert(locationData);
-  //       document.getElementById("locationData").innerHTML = locationData;
-  //     } else {
-  //       document.getElementById("locationData").innerText =
-  //         "Unable to fetch location";
-  //     }
-  //   });
-  // });
+// document.addEventListener("DOMContentLoaded", () => {
+//   chrome.runtime.sendMessage({ action: "getLocation" }, (location) => {
+//     if (location) {
+//       const locationData = `Latitude: ${location.latitude}, Longitude: ${location.longitude}`;
+//       // alert(locationData);
+//       document.getElementById("locationData").innerHTML = locationData;
+//     } else {
+//       document.getElementById("locationData").innerText =
+//         "Unable to fetch location";
+//     }
+//   });
+// });
 // } else {
 //   document.getElementById("locationData").innerText =
 //     "Permission not granted for location";
