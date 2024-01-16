@@ -30,6 +30,27 @@
             letter-spacing: 1px;
             font-size: 10px;
             margin-bottom: 10px;
+            display: inline;
+        }
+
+        #downloadPDF {
+            padding: 8px;
+            border-radius: 0px;
+            outline: none;
+            border: none;
+            background-color: #ccc;
+            letter-spacing: 1px;
+            font-size: 10px;
+            margin-bottom: 10px;
+            display: inline;
+        }
+
+        #downloadPDF:hover {
+            background-color: #262626;
+            color: #fff;
+            transition: 0.5s;
+            letter-spacing: 1px;
+            font-size: 10px;
         }
 
         #showInteractions:hover {
@@ -54,6 +75,9 @@
     <div id="mainContent">
         <h2>All My Interactions</h2>
         <button id="showInteractions">Show All Interactions</button>
+        <!-- Add this button to your HTML file -->
+        <button id="downloadPDF">Download PDF</button>
+
         <p id="interactionsData"></p>
     </div>
     <div id="sidebar">

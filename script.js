@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("closeSidebarBtn")
     .addEventListener("click", closeSidebar);
 });
-
 function openSidebar() {
   document.getElementById("sidebar").style.width = "250px";
   document.getElementById("sidebar").style.visibility = "visible";
@@ -26,7 +25,6 @@ chrome.storage.local.get("interactions", (data) => {
     "totalCount"
   ).innerHTML = `Total Visit Counts: ${totalInteractions}`;
 });
-
 document
   .getElementById("locationToggle")
   .addEventListener("change", function () {

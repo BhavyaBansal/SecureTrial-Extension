@@ -42,8 +42,10 @@
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "trackInteraction") {
     if (request.url !== "about:blank") {
+      const domain = getCurrentDomain(request.url);
       const interactionData = {
         url: request.url,
+        domain: domain,
         websiteName: window.location.hostname, // Add website name here
         timestamp: new Date().toISOString(),
         interactionCount: 1,
@@ -77,6 +79,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
           interactions.push(interactionData);
         }
         chrome.storage.local.set({ interactions: interactions });
+
+        const partitions = data.partitions || {};
+        if (!partitions[domain]) {
+          partitions[domain] = [];
+        }
+        partitions[domain].push(interactionData);
+        chrome.storage.local.set({ partitions: partitions });
       });
     }
   } else if (request.action === "set_user_agent") {
@@ -84,4 +93,12 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 });
 
-
+function getCurrentDomain(url) {
+  try {
+    const urlObject = new URL(url);
+    return urlObject.hostname;
+  } catch (error) {
+    console.error("Error extracting domain:", error);
+    return null;
+  }
+}

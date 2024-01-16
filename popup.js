@@ -1,12 +1,14 @@
 // popup.js
-
 document.getElementById("showInteractions").addEventListener("click", () => {
   chrome.storage.local.get("interactions", (data) => {
     const interactions = data.interactions || [];
     displayInteractions(interactions);
   });
+  chrome.storage.local.get("partitions", (data) => {
+    const partitions = data.partitions || {};
+    alert(JSON.stringify(partitions));
+  });
 });
-
 
 function displayInteractions(interactions) {
   const interactionsDataDiv = document.getElementById("interactionsData");
@@ -37,28 +39,20 @@ function displayInteractions(interactions) {
     interactionsDataDiv.appendChild(paragraph);
   });
 }
-// document.getElementById("agentbtn").addEventListener("click", () => {
-// chrome.storage.local.get("agentData", (data) => {
-//   const userAgent = data.agentData || "N/A";
-//   // alert(userAgent);
-//   document.getElementById("userAgent").innerHTML = `User-Agent: ${userAgent}`;
-// });
-// });
 
-// if (window.confirm("Allow this extension to access your location?")) {
-// document.addEventListener("DOMContentLoaded", () => {
-//   chrome.runtime.sendMessage({ action: "getLocation" }, (location) => {
-//     if (location) {
-//       const locationData = `Latitude: ${location.latitude}, Longitude: ${location.longitude}`;
-//       // alert(locationData);
-//       document.getElementById("locationData").innerHTML = locationData;
-//     } else {
-//       document.getElementById("locationData").innerText =
-//         "Unable to fetch location";
-//     }
-//   });
+// document.getElementById("downloadPDF").addEventListener("click", () => {
+//   const interactionsDataDiv = document.getElementById("interactionsData");
+//   window.print();
+//   downloadPDF(interactionsDataDiv);
 // });
-// } else {
-//   document.getElementById("locationData").innerText =
-//     "Permission not granted for location";
+// function downloadPDF(element) {
+//   // alert("Hello");
+//   const pdf = new jsPDF();
+//   pdf.text("All My Interactions", 20, 10);
+//   pdf.fromHTML(element, 15, 20);
+//   pdf.save("interactions.pdf");
 // }
+// popup.js
+
+
+

@@ -5,6 +5,7 @@ chrome.runtime.onInstalled.addListener(() => {
     interactions: [],
     blockedCookies: [],
     agentData: [],
+    partitions: {},
   });
 });
 
@@ -41,29 +42,6 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
       }
     }
     return { requestHeaders: details.requestHeaders };
-  },
-  { urls: ["<all_urls>"] },
-  ["requestHeaders"]
-);
-
-chrome.webRequest.onBeforeSendHeaders.addListener(
-  (details) => {
-    if (details.requestHeaders) {
-      // console.log(details.requestHeaders);
-      const cookies = details.requestHeaders.find(
-        (header) => header.name === "Cookie"
-      );
-      // console.log(cookies);
-      if (cookies) {
-        const cookieInfo = {
-          url: details.url,
-          cookies: cookies.value,
-          purpose: "Some description of the purpose of the cookies",
-        };
-        console.log("Captured Cookies:", cookieInfo);
-        chrome.runtime.sendMessage({ action: "captureCookies", cookieInfo });
-      }
-    }
   },
   { urls: ["<all_urls>"] },
   ["requestHeaders"]

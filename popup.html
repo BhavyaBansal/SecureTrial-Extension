@@ -19,27 +19,39 @@
         img {
             width: 250px;
             height: 250px;
-            /* box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px; */
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+            border-radius: 50%;
+            margin-top: 10px;
+            animation: floatAnimation 5s infinite ease-in-out;
         }
+
+        @keyframes floatAnimation {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
 
         #imageContainer {
             padding: 0px 10px;
         }
 
         #extensionName {
-            color: #a8d48b;
+            color: #1B4353;
             font-size: 50px;
-            letter-spacing: 4px;
+            letter-spacing: 2px;
             margin: 0;
-            font-weight: bold;
-            /* font-family: "Alegreya Sans SC"; */
+            /* font-weight: bold; */
             font-family: 'Caprasimo', serif;
-            -moz-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
-            -webkit-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
-            -o-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
-            -ms-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
-            transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
-            text-shadow: 1px 1px #4A744D, 2px 2px #4A744D, 3px 3px #4A744D, 4px 4px #4A744D, 5px 5px #4A744D, 6px 6px #4A744D, 7px 7px #4A744D, 8px 8px #4A744D, 9px 9px #4A744D, 10px 10px #4A744D, 11px 11px #4A744D, 12px 12px #4A744D, 13px 13px #4A744D, 14px 14px #4A744D, 15px 15px #4A744D, 16px 16px #4A744D, 17px 17px #4A744D, 18px 18px #4A744D, 19px 19px #4A744D, 20px 20px #4A744D, 21px 21px #4A744D, 22px 22px #4A744D, 23px 23px #4A744D, 24px 24px #4A744D, 25px 25px #4A744D, 26px 26px 6px #06520C;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -54,9 +66,8 @@
     <div id="imageContainer">
         <img src="images/cookie.png" alt="Delete All Cookies Image">
     </div>
-    <p id="extensionName">Secure</p>
-    <p id="extensionName">Trial</p>
-    <!-- <button id="agentbtn">Click Me</button> -->
+    <p id="extensionName">SECURE</p>
+    <p id="extensionName">TRIAL</p>
     <div id="sidebar">
         <span id="closeSidebarBtn">X</span>
         <div id="sidebarContainer">
