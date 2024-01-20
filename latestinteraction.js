@@ -2,16 +2,25 @@ document.getElementById("latestInteraction").addEventListener("click", () => {
   chrome.storage.local.get("interactions", (data) => {
     const interactions = data.interactions || [];
 
-    // Sort interactions based on timestamp in descending order
     const sortedInteractions = interactions.sort((a, b) => {
       return new Date(b.timestamp) - new Date(a.timestamp);
     });
 
-    // Display the latest interaction
     if (sortedInteractions.length > 0) {
       displayInteraction(sortedInteractions[0]);
     } else {
-      alert("No interactions recorded yet.");
+      const interactionsDataDiv = document.getElementById(
+        "latestInteractionData"
+      );
+      interactionsDataDiv.innerHTML = "";
+      const paragraph = document.createElement("p");
+      paragraph.innerHTML = `<b>No website interactions</b>`;
+      paragraph.style.color = "red";
+      paragraph.style.width = "250px";
+      paragraph.style.overflow = "auto";
+      paragraph.style.letterSpacing = "1px";
+      paragraph.style.fontSize = "10px";
+      interactionsDataDiv.appendChild(paragraph);
     }
   });
 });

@@ -54,7 +54,6 @@ document
     }
   });
 
-// User Agent Toggle
 document
   .getElementById("userAgentToggle")
   .addEventListener("change", function () {
@@ -63,7 +62,6 @@ document
     var notification = dataBox.querySelector(".notification");
     dataBox.classList.toggle("active", this.checked);
 
-    // Simulate fetching data (replace with actual fetching logic)
     if (this.checked) {
       notification.style.display = "none";
       chrome.storage.local.get("agentData", (data) => {
